@@ -1,0 +1,36 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# Allow
+!/node_modules/fabric/*
+!/node_modules/fabric/dist
+!/node_modules/fabric/dist/*
+!node_modules/font-picker-react
+!node_modules/font-picker-react/dist
+!node_modules/font-picker-react/dist/*
+!node_modules/bootstrap/dist
+!node_modules/bootstrap/dist/css
+
+!node_modules/fabric/dist/fabric.js
+!node_modules/font-picker-react/dist/FontPicker.js
+!node_modules/bootstrap/dist/css/bootstrap.css
+!node_modules/react-web-tabs/dist/react-web-tabs.css
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
