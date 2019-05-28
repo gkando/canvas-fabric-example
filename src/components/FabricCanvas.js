@@ -9,6 +9,7 @@ import {
     initAligningGuidelines
 }
 from './Helpers'
+import { Droppable } from 'react-drag-and-drop';
 class FabricCanvas extends React.Component {
     state = {
         displaybgColorPicker: false,
@@ -304,12 +305,49 @@ class FabricCanvas extends React.Component {
             displaybgColorPicker: false
         })
     };
+    addImg = (data) =>
+    {
+        var canvas = this.canvas;
+        if(data.image){
+        
+        fabric.Image.fromURL(data.image, (image) => {
+            image.set({
+                left: 100,
+                top: 100,
+                padding: 10,
+                cornersize: 10,
+                scaleX: 1,
+                scaleY: 1
+            });
+            canvas.add(image);
+            image.scaleToWidth(200);
+            saveCanvasState(canvas);
+            
+        },{
+          crossOrigin: 'anonymous'
+        });
+    }
+    if(data.bgpattern)
+    {
+    this.deleteCanvasBg();
+    canvas.setBackgroundColor({
+      source: data.bgpattern
+    }, this.refreshcanvas.bind(this, canvas));
+    }
+    }
+    refreshcanvas = (canvas) => {
+    canvas.renderAll(canvas);
+    saveCanvasState(canvas);
+  }
+
     render() {
         return ( 
             <div className = "main-area">
             <div className = "canvasarea">
+            <Droppable types={['image','bgpattern']} onDrop={this.addImg.bind(this)}>
             <canvas id='main-canvas'>
-            </canvas> 
+            </canvas>
+            </Droppable> 
             </div> 
             </div>
         );

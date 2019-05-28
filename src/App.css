@@ -13,7 +13,7 @@ body {
 .header-bar .nav-item:last-child {padding-right: 0;}
 .header-bar .nav-item .nav-link {color: #fff;}
 .left-link .nav-link {color: #fff;font-size: 20px;}
-.leftpanelcontent {width: 100%}
+.leftpanelcontent {width: 100%;}
 /*.edit-box h1 {margin: 0;}
 .edit-box {border-bottom: 1px solid #ececec;margin: 0 0px;padding: 10px;min-height: 100px;}*/
 .text-editer {color: #535b82;font-weight: 600; text-align: center;}
@@ -21,36 +21,20 @@ body {
 .sub-title {font-weight: 600;}
 .first-title {font-weight: normal;}
 .main-area img {transform: translateY(-50%) translateX(-50%);top: 50%;position: absolute;left: 50%;max-width: 100%;}
-.navbar-nav .btn.btn-primary {margin-top: 10px;padding: 8px 30px;margin-right: 20px;font-size: 14px;}
+/*.navbar-nav .btn.btn-primary {margin-top: 10px;padding: 8px 30px;margin-right: 20px;font-size: 14px;}*/
 .solid-colors .solidcolor {width: 40px;height: 40px;display: table;border-radius: 50%;margin: 5px;line-height: 34px;float: left;box-shadow: 0 0 2px -1px #000;text-align: center;}
 /*.solid-colors .solidcolor {width: 40px;height: 40px;display: table;border-radius: 50%;margin: 5px;line-height: 34px;float: left;box-shadow: 0 0 2px -1px #000;text-align: center;}*/
 /*.gradients-colors span {width: 40px;height: 40px;display: table;border-radius: 50%;margin: 5px;line-height: 34px;float: left;box-shadow: 0 0 2px -1px #000;text-align: center;}*/
 .gradients-colors .grdcolor {width: 40px;height: 40px;display: table;border-radius: 50%;margin: 5px;line-height: 34px;float: left;box-shadow: 0 0 2px -1px #000;text-align: center;}
 .solid-colors {display: table;}
-.gradients-colors, .patterns {display: table;margin-top: 25px;}
+.gradients-colors, .patterns {display: table;margin-top: 25px;width: 300px;}
 .patterns span {height: 90px;width: 90px;display: table;float: left;margin: 5px;border-radius: 5px;cursor: pointer;}
 
 /*.vertical-tabs
 {
   background-color: #fff;
 }*/
-.headerbtn
-{
-	background-color:#2d4052!important;
-	border-color:#2d4052!important;
-}
-.rwt__tab
-{
-    background-color: #2d4052!important;
-    color: #fff!important;
-    width: 80px;
-}
 
-.rwt__tab:hover,
-.rwt__tab:focus {
-  outline: 0;
-  background-color: #e91e63 !important;
-}
 
 /*.rwt__tablist[aria-orientation="vertical"] .rwt__tab[aria-selected="true"]:after {
   border-right: none!important;
@@ -62,13 +46,7 @@ body {
 .rwt__tab:focus {
   background-color: #fff!important;
 }*/
-.rwt__tablist:not([aria-orientation="vertical"]) .rwt__tab[aria-selected="true"]:after {
-    border-right: none!important;
-}
 
-.rwt__tablist[aria-orientation="vertical"] .rwt__tab[aria-selected="true"]:after {
-  border-right: none!important;
-}
 .download
 {
   color: #fff;
@@ -763,4 +741,56 @@ background-image:url(./images/elements/instagram.svg);
 .element9
 {
 background-image:url(./images/elements/dryer.svg);
+}
+
+/*new added styles*/
+.rwt__tablist 
+{
+    background-color: #2d4052!important;
+    height: 1010px;
+}
+.headerbtn
+{
+  background-color:#2d4052!important;
+  border-color:#2d4052!important;
+}
+.rwt__tab
+{
+    background-color: #2d4052!important;
+    color: #fff!important;
+    width: 80px;
+}
+.rwt__tab:hover,
+.rwt__tab:focus {
+  outline: 0;
+  background-color: #e91e63 !important;
+}
+.rwt__tablist:not([aria-orientation="vertical"]) .rwt__tab[aria-selected="true"]:after {
+    border-right: none!important;
+}
+
+.rwt__tablist[aria-orientation="vertical"] .rwt__tab[aria-selected="true"]:after {
+  border-right: none!important;
+  background-color: #e91e63 !important;
+}
+.rwt__tablist[aria-orientation="vertical"] .rwt__tab[aria-selected="true"] .edit-box1 h1 img{
+  object-position: -99999px 99999px;
+  background: url('./images/icon-background-hover.png') left top no-repeat;
+
+}
+.rwt__tablist[aria-orientation="vertical"] .rwt__tab[aria-selected="true"] .edit-box2 h1 img{
+  object-position: -99999px 99999px;
+  background: url('./images/icon-picture-hover.png') left top no-repeat;
+}
+
+.edit-box1, .edit-box2
+{
+  font-size: 10.5px;
+}
+.navbar-nav .btn.btn-primary {margin-top: 5px;font-size: 14px;}
+
+@media screen and (max-width: 1500px) {
+  .gradients-colors, .patterns {
+    width: 200px!important;
+  }
 }

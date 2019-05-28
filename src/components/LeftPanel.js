@@ -6,6 +6,7 @@ import { TabPanel } from 'react-web-tabs';
 import { client } from 'filestack-react';
 import Popup from 'reactjs-popup'
 import { unique, saveCanvasState } from './Helpers'
+import { Draggable } from 'react-drag-and-drop';
 //import $ from 'jquery';
 
 class LeftPanel extends React.Component {
@@ -541,15 +542,15 @@ class LeftPanel extends React.Component {
               <Col>                  
                  <div className="patterns">
                     <p>Patterns</p>
-                    <span className="pattern1" onClick={() => this.applyBGPattern(require('../images/img/pattern1.jpg'))}></span> 
-                    <span className="pattern2" onClick={() => this.applyBGPattern(require('../images/img/pattern2.jpg'))}></span> 
-                    <span className="pattern3" onClick={() => this.applyBGPattern(require('../images/img/pattern3.jpg'))}></span> 
-                    <span className="pattern4" onClick={() => this.applyBGPattern(require('../images/img/pattern4.jpg'))}></span> 
-                    <span className="pattern5" onClick={() => this.applyBGPattern(require('../images/img/pattern5.jpg'))}></span> 
-                    <span className="pattern6" onClick={() => this.applyBGPattern(require('../images/img/pattern6.jpg'))}></span> 
-                    <span className="pattern7" onClick={() => this.applyBGPattern(require('../images/img/pattern7.jpg'))}></span> 
-                    <span className="pattern8" onClick={() => this.applyBGPattern(require('../images/img/pattern8.jpg'))}></span> 
-                    <span className="pattern9" onClick={() => this.applyBGPattern(require('../images/img/pattern9.jpg'))}></span> 
+                    <Draggable type="bgpattern" data={require('../images/img/pattern1.jpg')}><span className="pattern1" onClick={() => this.applyBGPattern(require('../images/img/pattern1.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern2.jpg')}><span className="pattern2" onClick={() => this.applyBGPattern(require('../images/img/pattern2.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern3.jpg')}><span className="pattern3" onClick={() => this.applyBGPattern(require('../images/img/pattern3.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern4.jpg')}><span className="pattern4" onClick={() => this.applyBGPattern(require('../images/img/pattern4.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern5.jpg')}><span className="pattern5" onClick={() => this.applyBGPattern(require('../images/img/pattern5.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern6.jpg')}><span className="pattern6" onClick={() => this.applyBGPattern(require('../images/img/pattern6.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern7.jpg')}><span className="pattern7" onClick={() => this.applyBGPattern(require('../images/img/pattern7.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern8.jpg')}><span className="pattern8" onClick={() => this.applyBGPattern(require('../images/img/pattern8.jpg'))}></span></Draggable>
+                    <Draggable type="bgpattern" data={require('../images/img/pattern9.jpg')}><span className="pattern9" onClick={() => this.applyBGPattern(require('../images/img/pattern9.jpg'))}></span></Draggable>
                  </div>
               </Col>
             </Row>
@@ -560,7 +561,7 @@ class LeftPanel extends React.Component {
             <Row>
               <Col>
                  <div className="pixabaysection">
-                    <p>Photos</p>
+                    <p>Images</p>
                      <Form>
                       <Input type="text" onKeyPress={(event) => this.searchImage(event)}  placeholder="Search Images" />
                      </Form>
@@ -568,7 +569,7 @@ class LeftPanel extends React.Component {
                      {
                         this.state.apiImg.map((img, index) => {
                          return (
-                         <span key={index} onClick={() => this.addImage(img.largeImageURL)} ><img  className="pixabay" src={img.largeImageURL}  alt ="" /></span> 
+                         <span key={index} onClick={() => this.addImage(img.largeImageURL)} ><Draggable type="image" data={img.largeImageURL}><img  className="pixabay" src={img.largeImageURL}  alt ="" /></Draggable></span> 
                          )
                        })
                      }
@@ -578,29 +579,7 @@ class LeftPanel extends React.Component {
             </Row>
           </Container>
         </TabPanel>
-        <TabPanel tabId="vertical-tab-four">
-          <Container className="text-editer">
-            <Row>
-              <Col>
-                  <p>Elements</p>                              
-                  <p className="btn btn-primary" onClick = {this.uploadIcon}>Upload Icon</p>
-                   <div className="patterns">
-                    <p>Elements</p>
-                    <span className="element1" onClick={() => this.addSVG(require('../images/elements/closet.svg'))}></span>
-                    <span className="element2" onClick={() => this.addSVG(require('../images/elements/confetti.svg'))}></span> 
-                    <span className="element3" onClick={() => this.addSVG(require('../images/elements/Email.svg'))}></span> 
-                    <span className="element4" onClick={() => this.addSVG(require('../images/elements/facebook.svg'))}></span> 
-                    <span className="element5" onClick={() => this.addSVG(require('../images/elements/gift.svg'))}></span> 
-                    <span className="element6" onClick={() => this.addSVG(require('../images/elements/hat.svg'))}></span> 
-                    <span className="element7" onClick={() => this.addSVG(require('../images/elements/fireplace.svg'))}></span> 
-                    <span className="element8" onClick={() => this.addSVG(require('../images/elements/instagram.svg'))}></span> 
-                    <span className="element9" onClick={() => this.addSVG(require('../images/elements/dryer.svg'))}></span> 
-                     
-                 </div>
-              </Col>
-            </Row>
-          </Container>
-        </TabPanel>
+        
        </div>
       );
     }

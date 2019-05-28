@@ -199,30 +199,23 @@ class App extends Component {
             <TabList>
             
             <Tab tabFor="vertical-tab-two" className="lasttab">
-            <div className="edit-box">
+            <div className="edit-box1">
             <h1><img src={require('./images/icon-background.png')} alt="" /></h1>
-            <span>BK GROUND</span>
+            <span>BACKGROUND</span>
             </div>
             </Tab>
             <Tab tabFor="vertical-tab-three" className="lasttab">
-            <div className="edit-box">
+            <div className="edit-box2">
             <h1><img src={require('./images/icon-picture.png')} alt="" /></h1>
-            <span>Images</span>
+            <span>IMAGES</span>
             </div>
             </Tab>
-            <Tab tabFor="vertical-tab-four" className="lasttab">
-            <div className="edit-box">
-            <h1><img src={require('./images/icon-picture.png')} alt="" /></h1>
-            <span>Elements</span>
-            </div>
-            </Tab>
+            
             </TabList>
             <Collapse isOpen={this.state.collapse}>
               <LeftPanel canvas={this.state.canvas} />
             </Collapse>
-            <div className="togglebtn" style={{left: this.state.toggleleft}} onClick={this.toggleSidebar}>
-             <img className="arrowimage" src={require('./images/left.png')} alt="" />
-            </div>
+            
             </Tabs>   
           </Col>
           <Col xs={this.state.rightcolsize}>              
