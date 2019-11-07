@@ -25,7 +25,7 @@ class App extends Component {
       fontBoldValue: 'normal',
       fontItalicValue: '',
       fontUnderlineValue: '',
-      collapse: true,
+      collapse: false,
       leftcolsize: 3,
       rightcolsize: 9,
       footercolsize: 3,
@@ -224,6 +224,12 @@ class App extends Component {
             <div className="edit-box2">
             <h1><img src={require('./images/icon-picture.png')} alt="" /></h1>
             <span>IMAGES</span>
+            </div>
+            </Tab>
+            <Tab tabFor="vertical-tab-four" className="lasttab">
+            <div className="edit-box3">
+            <h1><img src={require('./images/icon-Text.png')} alt="" /></h1>
+            <span>TEXT</span>
             </div>
             </Tab>
             

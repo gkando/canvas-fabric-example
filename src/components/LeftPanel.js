@@ -4,6 +4,7 @@ import { SketchPicker } from 'react-color';
 import { Row, Col, Container, Form, Input } from "reactstrap";
 import { TabPanel } from 'react-web-tabs';
 import { client } from 'filestack-react';
+import FontPicker from 'font-picker-react';
 import Popup from 'reactjs-popup'
 import { unique, saveCanvasState } from './Helpers'
 import { Draggable } from 'react-drag-and-drop';
@@ -23,7 +24,9 @@ class LeftPanel extends React.Component {
     grad2color: 'black',
     apiImg:[],
     page: 1,
-    searchkey: 'sport'
+    searchkey: 'sport',
+    displayColorPicker: false,
+    activeFontFamily: "Open Sans",
   };
   componentDidMount() {
     var bgcolArray = localStorage.getItem("bgcolors");
@@ -83,6 +86,7 @@ class LeftPanel extends React.Component {
     canvas.renderAll();
   }
   addText = () => {
+    console.log('add text')
     var canvas = this.props.canvas;
     var text = new fabric.Textbox('Add text', {
       fontFamily: 'arial',
@@ -91,10 +95,72 @@ class LeftPanel extends React.Component {
       type: 'text',
       fontSize: 18,
       width: 200,
+      fill: 'pink'
     });
     canvas.add(text);
     canvas.renderAll();
   }
+  getItemType = () => {
+    var canvas = this.props.canvas;
+    var activeObject = canvas.getActiveObject();
+    console.log('active', activeObject)
+}
+// setTextColor = () => {
+//     var canvas = this.props.canvas;
+//     var activeObject = canvas.getActiveObject();
+//     console.log('active', activeObject)
+//     if (!activeObject) return;
+//     if (activeObject.type === 'text') {
+//       console.log('ITEM IS TEXT')
+//       activeObject.set({fill: 'blue'})
+//       saveCanvasState(canvas);
+//     }
+//     else {
+//         return
+//     }
+// }
+
+// TEXT TOOLS
+
+setTextFont = (fontfamily) => {
+  this.setState({
+    activeFontFamily: fontfamily
+  })
+  this.setActiveStyle('fontFamily', fontfamily);
+}
+setTextBold = () => {
+  var fontBoldValue = (this.state.fontBoldValue === "normal") ? "bold" : "normal";
+  this.setActiveStyle('fontWeight', fontBoldValue);
+  this.state.fontBoldValue = fontBoldValue;
+}
+setTextItalic = () => {
+  var fontItalicValue = (this.state.fontItalicValue === "normal") ? "italic" : "normal";
+  this.setActiveStyle('fontStyle', fontItalicValue);
+  this.state.fontItalicValue = fontItalicValue;
+}
+setTextUnderline = () => {
+  var fontUnderlineValue = !this.props.state.fontUnderlineValue ? "underline" : false;
+  this.setActiveStyle('underline', fontUnderlineValue);
+  this.state.fontUnderlineValue = fontUnderlineValue;
+}   
+setTextColor = (color) => {
+  var canvas = this.props.canvas;
+  var activeObject = canvas.getActiveObject();
+  activeObject.set('fill', color.hex);
+  canvas.renderAll();
+}
+
+pickerOpen = () => {
+  this.setState({
+      displayColorPicker: !this.state.displayColorPicker
+  })
+};
+pickerClose = () => {
+  this.setState({
+      displayColorPicker: false
+  })
+};
+
   deleteCanvasBg = () => {
     var canvas = this.props.canvas;
     canvas.backgroundColor = '';
@@ -579,7 +645,25 @@ class LeftPanel extends React.Component {
             </Row>
           </Container>
         </TabPanel>
-        
+        <TabPanel tabId="vertical-tab-four">
+          <Container className="text-editer">
+            <Row>
+              <Col>
+                 <div className="pixabaysection">
+                    <p>Text</p>
+                     <div ref="iScroll" className="scroller" id="scroll-1">
+                     <span onClick={() => this.addText()} > Add </span>
+                     <span onClick={this.pickerOpen} > Color </span>
+                     </div>
+                 </div>
+              </Col>
+            </Row>
+          </Container>
+        </TabPanel>
+        { this.state.displayColorPicker ? <div style={ styles.popover }>
+          <div style={ styles.cover } onClick={ this.pickerClose }/>
+          <SketchPicker onChangeComplete={ this.setTextColor } />
+        </div> : null }
        </div>
       );
     }

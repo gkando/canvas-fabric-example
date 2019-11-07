@@ -341,6 +341,18 @@ class FabricCanvas extends React.Component {
     canvas.renderAll(canvas);
     saveCanvasState(canvas);
   }
+//   addTxt = (data) =>
+//   {
+//     var textbox = new fabric.Textbox('Lorum ipsum dolor sit amet', {
+//         left: 50,
+//         top: 50,
+//         width: 150,
+//         fontSize: 20
+//     });
+//     canvas.add(textbox).setActiveObject(textbox);
+//     saveCanvasState(canvas);
+//   }
+
     render() {
         return ( 
             <div className = "main-area">
