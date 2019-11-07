@@ -4,7 +4,9 @@ import FontPicker from "./FontPicker";
 import { fabric } from "fabric";
 
 import "./styles.css";
-
+// https://stackoverflow.com/questions/43924988/displaying-applicable-controls-with-fabric-js
+// http://casesandberg.github.io/react-color/#examples
+// https://react-popup.elazizi.com/react-tooltip/
 function App() {
   const [font, setFont] = useState("Arial");
   const [canvas, setCanvas] = useState();
