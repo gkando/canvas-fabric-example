@@ -1,11 +1,12 @@
 // File Imports
 import React, { Component } from 'react';
 import FabricCanvas from './components/FabricCanvas';
-import { Row, Col, Container, Collapse } from "reactstrap";
+import { Row, Col, Container, Collapse, Modal, Button } from "reactstrap";
 import { Tabs, Tab, TabList } from 'react-web-tabs';
 import Toolbar from './components/Toolbar';
 import LeftPanel from './components/LeftPanel';
 import Footer from './components/Footer';
+import Settings from './components/Settings';
 import { fabric } from 'fabric';
 import './App.css';
 
@@ -18,8 +19,8 @@ class App extends Component {
       isSnap: false,
       isOverlap: false,
       isGrid: false,
-      canvaswidth: 650,
-      canvasheight: 375,
+      canvaswidth: 1000,
+      canvasheight: 600,
       defaultbg: require('./images/main-img.jpg'),
       fontBoldValue: 'normal',
       fontItalicValue: '',
@@ -29,9 +30,17 @@ class App extends Component {
       rightcolsize: 9,
       footercolsize: 3,
       toggleleft: "0px",
-      gridsize: 30
+      gridsize: 30,
+      showSettings: false
     };
   }
+
+  onChangeHandler = (e) => {
+    console.log(e.target.name)
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state.canvaswidth, this.state.canvasheight)
+	};
+
   updateCanvas = (canvas) => {
     this.setState({
       canvas: canvas
@@ -42,6 +51,12 @@ class App extends Component {
   }
   updateState = (stateoptions) => {
     this.setState(stateoptions);
+  }
+  toggleSettings = () => {
+    console.log('toggleSettings', this.state.showSettings)
+    this.setState(state => ({
+      showSettings: !state.showSettings
+    }));
   }
   toggleSidebar = () => {
     this.setState(state => ({
@@ -170,7 +185,8 @@ class App extends Component {
     
     return (
 
-      <Container>
+      <Container fluid={true}>
+        <Settings show={this.state.showSettings} close={this.toggleSettings} changeHandler={this.onChangeHandler} value={this.state.canvasheight} />
         <Row className="bottomborder">
           <Col xs="3">
             <nav className="navbar navbar-expand-lg header-bar">
@@ -185,7 +201,7 @@ class App extends Component {
                 <ul className="navbar-nav ml-md-auto">
                   <li className="nav-item active download"> <a className="btn btn-primary headerbtn" >UNDO</a> </li>
                   <li className="nav-item active download"> <a className="btn btn-primary headerbtn" >REDO</a> </li> 
-                  <li className="nav-item active download"> <a className="btn btn-primary headerbtn" >SETTINGS</a> </li>
+                  <li className="nav-item active"> <Button color="link" onClick={this.toggleSettings} className="btn btn-primary headerbtn" >SETTINGS</Button> </li>
                   <li className="nav-item active download"> <a className="btn btn-primary headerbtn" >LOGOUT</a> </li>                   
                   
                 </ul>

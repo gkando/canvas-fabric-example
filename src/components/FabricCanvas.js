@@ -11,6 +11,7 @@ import {
 from './Helpers'
 import { Droppable } from 'react-drag-and-drop';
 class FabricCanvas extends React.Component {
+    
     state = {
         displaybgColorPicker: false,
     };
@@ -26,6 +27,7 @@ class FabricCanvas extends React.Component {
         this.props.updateState(stateoptions);
     }
     componentDidMount() {
+        console.log('canvas', this.props)
         // Make a New Canvas
         this.canvas = new fabric.Canvas('main-canvas', {
             preserveObjectStacking: true,
@@ -339,7 +341,6 @@ class FabricCanvas extends React.Component {
     canvas.renderAll(canvas);
     saveCanvasState(canvas);
   }
-
     render() {
         return ( 
             <div className = "main-area">
