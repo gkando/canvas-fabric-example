@@ -214,24 +214,24 @@ class App extends Component {
             <Tabs defaultTab="vertical-tab-two" vertical className="vertical-tabs">
             <TabList>
             
-            <Tab tabFor="vertical-tab-two" className="lasttab">
-            <div className="edit-box1">
-            <h1><img src={require('./images/icon-background.png')} alt="" /></h1>
-            <span>BACKGROUND</span>
-            </div>
-            </Tab>
-            <Tab tabFor="vertical-tab-three" className="lasttab">
-            <div className="edit-box2">
-            <h1><img src={require('./images/icon-picture.png')} alt="" /></h1>
-            <span>IMAGES</span>
-            </div>
-            </Tab>
-            <Tab tabFor="vertical-tab-four" className="lasttab">
-            <div className="edit-box3">
-            <h1><img src={require('./images/icon-Text.png')} alt="" /></h1>
-            <span>TEXT</span>
-            </div>
-            </Tab>
+              <Tab onClick={this.toggleSidebar} tabFor="vertical-tab-two" className="lasttab">
+                <div className="edit-box1">
+                <h1><img src={require('./images/icon-background.png')} alt="" /></h1>
+                <span>BACKGROUND</span>
+                </div>
+              </Tab>
+              <Tab onClick={this.toggleSidebar} tabFor="vertical-tab-three" className="lasttab">
+                <div className="edit-box2">
+                <h1><img src={require('./images/icon-picture.png')} alt="" /></h1>
+                <span>IMAGES</span>
+                </div>
+              </Tab>
+              <Tab onClick={this.toggleSidebar} tabFor="vertical-tab-four" className="lasttab">
+                <div className="edit-box3">
+                <h1><img src={require('./images/icon-Text.png')} alt="" /></h1>
+                <span>TEXT</span>
+                </div>
+              </Tab>
             
             </TabList>
             <Collapse isOpen={this.state.collapse}>
