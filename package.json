@@ -16,7 +16,7 @@
     "react-dom": "^16.8.6",
     "react-drag-and-drop": "^3.0.0",
     "react-keydown": "^1.9.8",
-    "react-scripts": "1.0.17",
+    "react-scripts": "5.0.1",
     "react-web-tabs": "^1.0.1",
     "reactjs-popup": "^1.3.2",
     "reactstrap": "^8.0.0"
